@@ -3,9 +3,17 @@
     <!-- Include EnlighterJS Styles -->
     <link rel="stylesheet" type="text/css" href="css/EnlighterJS.min.css"/>
     <!-- Include MooTools Framework -->
-    <script type="text/javascript" src="js/MooTools-More-1.5.1-compressed.js"></script>
+    <!--    <script type="text/javascript" src="js/MooTools-More-1.5.1-compressed.js"></script>-->
+    <script type="text/javascript" src="js/MooTools.min.js"></script>
     <!-- Include EnlighterJS -->
     <script type="text/javascript" src="js/EnlighterJS.min.js"></script>
+
+    <!-- Initialize EnlighterJS -->
+    <meta name="EnlighterJS" content="Advanced javascript based syntax highlighting" data-indent="4"
+          data-selector-block="pre" data-selector-inline="code" data-language="javascript"/>
+
+
+    <link rel="stylesheet" type="text/css" href="css/my.css"/>
 
 </head>
 
@@ -14,15 +22,42 @@
 
 Hello World
 
-<pre data-enlighter-language="js">
-$('#loading-example-btn').click(function () {
-  var btn = $(this)
-  btn.button('loading')
-  $.ajax(...).always(function () {
-    btn.button('reset')
-  });
-});
-</pre>
+<div class="border">
+a
+</div>
+
+<div class="border">
+a
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<div class="medium-box">
+    <pre class="medium-box" data-enlighter-language="js">
+    $('#loading-example-btn').click(function () {
+      var btn = $(this)
+      btn.button('loading')
+      $.ajax(...).always(function () {
+        btn.button('reset')
+      });
+    });
+    </pre>
+</div>
+
+<div class="medium-box">
+    <pre  data-enlighter-language="js">
+    $('#loading-example-btn').click(function () {
+      var btn = $(this)
+      btn.button('loading')
+      $.ajax(...).always(function () {
+        btn.button('reset')
+      });
+    });
+    </pre>
+</div>
+
 
 </body>
 </html>

@@ -1,0 +1,11 @@
+.medium-box {
+	width: 400;
+	display: inline-block;
+}
+
+.border {
+    width: 400px;
+	border: solid 1px;
+
+	display: inline-block;
+}
