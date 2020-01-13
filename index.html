@@ -16,8 +16,6 @@
     <link rel="stylesheet" type="text/css" href="css/my.css"/>
 
 </head>
-
-
 <body>
 
 Hello World
@@ -31,8 +29,9 @@ a
 </div>
 
 <br/>
-<br/>
-<br/>
+
+<div class="main-container">
+
 
 <div class="medium-box">
     <pre class="medium-box" data-enlighter-language="js">
@@ -43,6 +42,21 @@ a
         btn.button('reset')
       });
     });
+    </pre>
+</div>
+
+<div class="medium-box">
+    <iframe width="374" height="210" src="https://www.youtube.com/embed/WrbDaqKyhP4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--    <iframe width="560" height="315" src="https://www.youtube.com/embed/WrbDaqKyhP4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+</div>
+
+<div class="medium-box">
+    <pre  data-enlighter-language="java">
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hi");
+    }
+}
     </pre>
 </div>
 
@@ -58,6 +72,19 @@ a
     </pre>
 </div>
 
+<div class="medium-box">
+    <pre class="medium-box" data-enlighter-language="js">
+    $('#loading-example-btn').click(function () {
+      var btn = $(this)
+      btn.button('loading')
+      $.ajax(...).always(function () {
+        btn.button('reset')
+      });
+    });
+    </pre>
+</div>
+
+</div>
 
 </body>
 </html>
