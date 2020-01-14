@@ -39,7 +39,7 @@
 $('#loading-example-btn').click(function () {
   var btn = $(this)
   btn.button('loading')
-        
+
   $.ajax(...).always(function () {
     btn.button('reset')
   });
@@ -56,7 +56,7 @@ public class HelloWorld {
         System.out.println("Hi");
     }
 }
-    </pre>
+</pre>
 </div>
 
 <div class="medium-box">
@@ -69,7 +69,7 @@ $('#loading-example-btn').click(function () {
     btn.button('reset')
   });
 });
-    </pre>
+</pre>
 </div>
 
 <div class="medium-box">
@@ -82,7 +82,44 @@ $('#loading-example-btn').click(function () {
     btn.button('reset')
   });
 });
-    </pre>
+</pre>
+</div>
+
+<div class="medium-box">
+    <h3>Java Code</h3>
+    <pre  data-enlighter-language="java">
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hi");
+    }
+}
+</pre>
+</div>
+
+<div class="medium-box">
+    <h3>JS Code</h3>
+    <pre  data-enlighter-language="js">
+$('#loading-example-btn').click(function () {
+  var btn = $(this)
+  btn.button('loading')
+  $.ajax(...).always(function () {
+    btn.button('reset')
+  });
+});
+</pre>
+</div>
+
+<div class="medium-box">
+    <h3>JS Code</h3>
+    <pre class="medium-box" data-enlighter-language="js">
+$('#loading-example-btn').click(function () {
+  var btn = $(this)
+  btn.button('loading')
+  $.ajax(...).always(function () {
+    btn.button('reset')
+  });
+});
+</pre>
 </div>
 
 </div>
