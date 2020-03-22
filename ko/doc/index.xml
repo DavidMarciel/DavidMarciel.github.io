@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation on Hello Foo World</title>
+    <link>http://foowold.com/ko/doc/</link>
+    <description>Recent content in Documentation on Hello Foo World</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="http://foowold.com/ko/doc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>Content Formats</title>
+        <link>http://foowold.com/ko/doc/singlepage/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:51 +0900</pubDate>
+        
+        <guid>http://foowold.com/ko/doc/singlepage/</guid>
+        <description>Markdown here
+HEHEHE</description>
+      </item>
+      
+      <item>
+        <title>Getting started</title>
+        <link>http://foowold.com/ko/doc/gettingstarted/</link>
+        <pubDate>Tue, 28 Jan 2020 00:36:39 +0900</pubDate>
+        
+        <guid>http://foowold.com/ko/doc/gettingstarted/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>Documentation</title>
+        <link>http://foowold.com/ko/doc/prueba/</link>
+        <pubDate>Sat, 11 Jan 2020 14:09:21 +0900</pubDate>
+        
+        <guid>http://foowold.com/ko/doc/prueba/</guid>
+        <description>The content here is appeared when you click the manu. So called overview page.</description>
+      </item>
+      
+    
+  </channel>
+</rss>
