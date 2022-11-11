@@ -8,11 +8,14 @@
     
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+  
+  <script defer src="/js/fuse.min.94c78ad70b02749822921660cf4e9f0b3701bc0680c421afb784a78228de0275.js"></script>
 
-<script defer src="/js/fuse.min.c4bee9a8d44273d6154fe86006923d4131eb2e8069d8897687137c6f37f553e3.js"></script>
 
-<script defer src="/js/lazysizes.min.5e11d056075a05065b9c0bfec44084a113fc2976c2952ec804dedb61c7662db9.js"></script>
+
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
+
+<script defer src="/js/lazysizes.min.31dd6a2d3a1ec0f78a8df007535cf23f03aeb5c70f026e6d6a19dac3b3acc340.js"></script>
 
 <script defer src="/js/helper/getParents.min.1618c696be7c98933f9a92677f518b512a74e55bdbb976b09936b4182e93181b.js"></script>
 
@@ -21,17 +24,22 @@
 <script>
   "use strict";
 
-  
-  var languagedir = JSON.parse("\"ltr\"");
-
   window.onload = function() {
+    
+    var languagedir = JSON.parse("\"ltr\"");
+    
+    var baseurl = JSON.parse("\"http://davidmarciel.github.io/\"");
+    
+    var permalink = JSON.parse("\"http://davidmarciel.github.io/en/blog/\"");
 
     
     var toggleSidebarElem = document.getElementById("toggle-sidebar");
+    var toggleMenuElem = document.getElementById("toggle-menu");
     var tocBodyElem = document.querySelector('.toc__body');
     var tocLabelElem = document.querySelector('.toc__label');
     var listMainElem = document.getElementById('list-main');
     var listSideElem = document.getElementById('list-side');
+    var singleMenuElem = document.getElementById('single-menu');
     var sliderIcons = document.querySelectorAll('.slider__icon');
 
     toggleSidebarElem ?
@@ -77,7 +85,40 @@
           });
         }
       }) : null;
+
+    toggleMenuElem ?
+      toggleMenuElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'm';
+            singleMenuElem.className = 'l';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'lm';
+            singleMenuElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
     
+
 
     
     var navCollapseBtn = document.getElementById('navCollapseBtn');
@@ -118,26 +159,95 @@
     }
     
 
+
+
+    
+    document.querySelectorAll('.tab') ? 
+    document.querySelectorAll('.tab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var tabLinks = elem.querySelectorAll('.tab__link');
+      var tabContents = elem.querySelectorAll('.tab__content');
+      var ids = [];
+
+      tabLinks && tabLinks.length > 0 ?
+      tabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                tabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              tabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+
+    
+    document.querySelectorAll('.codetab') ? 
+    document.querySelectorAll('.codetab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var codetabLinks = elem.querySelectorAll('.codetab__link');
+      var codetabContents = elem.querySelectorAll('.codetab__content');
+      var ids = [];
+
+      codetabLinks && codetabLinks.length > 0 ?
+      codetabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                codetabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              codetabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
     
     
+    
+    var enableDarkMode = JSON.parse("true");
     var root = document.getElementById('root');
     var toggleToLightBtn = document.getElementById('toggleToLight');
     var toggleToDarkBtn = document.getElementById('toggleToDark');
 
-    toggleToDark.onclick = function(e) {
-      root.className = 'theme__dark';
-      localStorage.setItem('theme', 'dark');
-      toggleToLightBtn.className = 'navbar__icons--icon';
-      toggleToDarkBtn.className = 'hide';
-    }
-
-    toggleToLight.onclick = function (e) {
+    if (!enableDarkMode) {
       root.className = 'theme__light';
       localStorage.setItem('theme', 'light');
-      toggleToLightBtn.className = 'hide';
-      toggleToDarkBtn.className = 'navbar__icons--icon';
+    }
+    
+    if (toggleToDarkBtn) {
+      toggleToDarkBtn.onclick = function (e) {
+        root.className = 'theme__dark';
+        localStorage.setItem('theme', 'dark');
+        toggleToLightBtn.className = 'navbar__icons--icon';
+        toggleToDarkBtn.className = 'hide';
+      }
     }
 
+    if (toggleToLightBtn) {
+      toggleToLightBtn.onclick = function (e) {
+        root.className = 'theme__light';
+        localStorage.setItem('theme', 'light');
+        toggleToLightBtn.className = 'hide';
+        toggleToDarkBtn.className = 'navbar__icons--icon';
+      }
+    }
 
     
     document.querySelectorAll('.menu__list').forEach(function(elem) {
@@ -156,13 +266,11 @@
 
         var parent = elem.parentNode;
         while (parent.classList.contains('menu__list') && parent.classList.contains('active')) {
-          console.log('parent');
           parent.style.maxHeight = 100 * parent.children.length + "px";
           parent = parent.parentNode;
         }
 
         if (content.style.maxHeight) {
-          console.log('null');
           content.style.maxHeight = null;
           content.classList.remove('active');
           menuTitleIcon.classList.add('right');
@@ -173,7 +281,6 @@
             menuTitleIcon.classList.remove('down');
           }
         } else {
-          console.log('scrollHeight');
           content.style.maxHeight = content.scrollHeight + "px";
           content.classList.add('active');
           menuTitleIcon.classList.remove('right');
@@ -456,7 +563,7 @@
 
   
     
-    var searchURL = JSON.parse("\"http://foowold.com/en/\"");
+    var langprefix = JSON.parse("\"/en\"");
     var searchResults = null;
     var searchMenu = null;
     var searchText = null;
@@ -471,7 +578,7 @@
     if (enableSearch) {
       (function initFuse() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', searchURL + "index.json");
+        xhr.open('GET', baseurl + langprefix + "/index.json");
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         xhr.onload = function () {
           if (xhr.status === 200) {
@@ -831,7 +938,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -867,7 +973,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -954,7 +1059,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -968,7 +1072,7 @@
 <link rel="stylesheet" href="/css/main.min.css">
 
 
-    <link rel="alternate" type="application/rss&#43;xml" title="RSS" href="http://foowold.com/en/blog/index.xml">
+    <link rel="alternate" type="application/rss&#43;xml" title="RSS" href="http://davidmarciel.github.io/en/blog/index.xml">
 <meta name="description" content="Blog list page" />
 <meta name="keywords" content="">
 <meta name="created" content="0001-01-01T00:00:00&#43;0000">
@@ -977,13 +1081,13 @@
 
 <meta property="og:site_name" content="Hello Foo World">
 <meta property="og:title" content="Blog">
-<meta property="og:url" content="http://foowold.com/en/blog/">
+<meta property="og:url" content="http://davidmarciel.github.io/en/blog/">
 <meta property="og:type" content="website">
 
 <meta name="generator" content="Hugo 0.68.1" />
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="http://foowold.com/en/blog/">
+<link rel="canonical" href="http://davidmarciel.github.io/en/blog/">
 <link rel="manifest" href="/manifest.json">
 
   <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -1007,17 +1111,17 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "url" : "http://foowold.com/en/blog/",
+    "url" : "http://davidmarciel.github.io/en/blog/",
     "name": "Blog",
     "description": "Blog list page",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http://foowold.com/"
+      "@id": "http://davidmarciel.github.io/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Hello Foo World",
-      "url": "http://foowold.com/"
+      "url": "http://davidmarciel.github.io/"
     }
   }
 </script>
@@ -1026,12 +1130,20 @@
 
 </head>
 
+
 <body id="root" class="theme__dark">
     <script>
+        var rootElem = document.getElementById('root');
+        var themeOptions = JSON.parse("[\"dark\",\"light\"]");
         var localTheme = localStorage.getItem('theme');
+
         if (localTheme) {
-            document.getElementById('root').className = `theme__${localTheme}`;
-        }        
+            if (themeOptions && themeOptions.length > 0) {
+                themeOptions.includes(localTheme) ? 
+                rootElem.className = `theme__${localTheme}` :
+                rootElem.className = `theme__${themeOptions[0]}`;
+            }
+        }
     </script>
     
     <div id="container">
@@ -1264,7 +1376,7 @@
         
           
             
-              <a href="http://foowold.com/en/blog/" data-lang="en" class="lang__dropdown--item active">English</a>
+              <a href="http://davidmarciel.github.io/en/blog/" data-lang="en" class="lang__dropdown--item active">English</a>
             
           
         
@@ -1282,7 +1394,7 @@
         
           
             
-              <a href="http://foowold.com/es/blog/" data-lang="es" class="lang__dropdown--item">Español</a>
+              <a href="http://davidmarciel.github.io/es/blog/" data-lang="es" class="lang__dropdown--item">Español</a>
             
           
         
@@ -1398,9 +1510,10 @@
         
 <div class="top">
   <header class="header__wrapper bgcolor__header">
-    <div class="divider">
-      <div class="lmr">
-        
+    
+      <div class="divider">
+        <div class="lmr">
+          
     
   
     
@@ -1408,17 +1521,17 @@
       
       
         
-        <div class="blog-header__title" style="font-size: px; ;">
-          Blog
-        </div>
+          <div class="blog-header__title" style="font-size: px; ;">
+            Blog
+          </div>
               
       
       
       
          
-        <div class="blog-header__subtitle" style="font-size: px; " data-cursive="">
-          
-        </div>
+          <div class="blog-header__subtitle" style="font-size: px; " data-cursive="">
+            
+          </div>
               
       
     </div>
@@ -1428,27 +1541,30 @@
   
 
 
+        </div>
       </div>
-    </div>
+    
   </header>
-  
-  <div class="header__wrapper bgcolor__breadcrumb">
-    <div class="divider">
-      <div class="lmr flexbox jc-center flex-wrap tag__wrapper">
-        
-      </div>
-    </div>
-  </div>
 </div>
+
 <div class="mid blog__bg">
   <main class="main blog__bg">
-    <div class="sv" data-view="full">
-      <div class="blog">
+    <div class="sv">
+      <div class="blog-post">
         
         
         
 
 
+      </div>
+      <div class="blog-tags">
+        
+<h6 class="tag-cloud__label">
+  Blog
+</h6>
+<div class="tag-cloud__tags">
+  
+</div>
       </div>
     </div>
   </main>
@@ -1456,27 +1572,33 @@
 
 <script>
   var singleViewElem = document.querySelectorAll('.sv');
+  var postElem = document.querySelector('.blog-post');
+  var tagsElem = document.querySelector('.blog-tags');
 
   enquire.register("screen and (max-width:1280px)", {
     match: function () {
       singleViewElem.forEach(function(elem) {
-        elem.setAttribute('data-view', 'full');
+        postElem.className = "blog-post";
+        tagsElem.className = "blog-tags";
       });
     },
     unmatch: function () {
       singleViewElem.forEach(function (elem) {
-        elem.setAttribute('data-view', 'full');
+        postElem.className = "blog-post";
+        tagsElem.className = "blog-tags";
       });
     },
   }).register("screen and (max-width:769px)", {
     match: function () {
       singleViewElem.forEach(function (elem) {
-        elem.setAttribute('data-view', 'mobile');
+        postElem.className = "blog-total";
+        tagsElem.className = "hide";
       });
     },
     unmatch: function () {
       singleViewElem.forEach(function (elem) {
-        elem.setAttribute('data-view', 'full');
+        postElem.className = "blog-post";
+        tagsElem.className = "blog-tags";
       });
     },
   });
@@ -1489,7 +1611,7 @@
       <div class="lmr">
         
           <p class="caption">
-            ©2020, All Rights Reserved
+            ©2022, All Rights Reserved
           </p>
           
               <p class="caption">Powered by <a href="https://gohugo.io/" rel="noreferrer">Hugo</a> and the <a href="https://github.com/zzossig/hugo-theme-zdoc" rel="noreferrer">zDoc theme</a></p>

@@ -8,11 +8,14 @@
     
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+  
+  <script defer src="/js/fuse.min.94c78ad70b02749822921660cf4e9f0b3701bc0680c421afb784a78228de0275.js"></script>
 
-<script defer src="/js/fuse.min.c4bee9a8d44273d6154fe86006923d4131eb2e8069d8897687137c6f37f553e3.js"></script>
 
-<script defer src="/js/lazysizes.min.5e11d056075a05065b9c0bfec44084a113fc2976c2952ec804dedb61c7662db9.js"></script>
+
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
+
+<script defer src="/js/lazysizes.min.31dd6a2d3a1ec0f78a8df007535cf23f03aeb5c70f026e6d6a19dac3b3acc340.js"></script>
 
 <script defer src="/js/helper/getParents.min.1618c696be7c98933f9a92677f518b512a74e55bdbb976b09936b4182e93181b.js"></script>
 
@@ -21,17 +24,22 @@
 <script>
   "use strict";
 
-  
-  var languagedir = JSON.parse("\"ltr\"");
-
   window.onload = function() {
+    
+    var languagedir = JSON.parse("\"ltr\"");
+    
+    var baseurl = JSON.parse("\"http://davidmarciel.github.io/\"");
+    
+    var permalink = JSON.parse("\"http://davidmarciel.github.io/es/blog/\"");
 
     
     var toggleSidebarElem = document.getElementById("toggle-sidebar");
+    var toggleMenuElem = document.getElementById("toggle-menu");
     var tocBodyElem = document.querySelector('.toc__body');
     var tocLabelElem = document.querySelector('.toc__label');
     var listMainElem = document.getElementById('list-main');
     var listSideElem = document.getElementById('list-side');
+    var singleMenuElem = document.getElementById('single-menu');
     var sliderIcons = document.querySelectorAll('.slider__icon');
 
     toggleSidebarElem ?
@@ -77,7 +85,40 @@
           });
         }
       }) : null;
+
+    toggleMenuElem ?
+      toggleMenuElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'm';
+            singleMenuElem.className = 'l';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'lm';
+            singleMenuElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
     
+
 
     
     var navCollapseBtn = document.getElementById('navCollapseBtn');
@@ -118,26 +159,95 @@
     }
     
 
+
+
+    
+    document.querySelectorAll('.tab') ? 
+    document.querySelectorAll('.tab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var tabLinks = elem.querySelectorAll('.tab__link');
+      var tabContents = elem.querySelectorAll('.tab__content');
+      var ids = [];
+
+      tabLinks && tabLinks.length > 0 ?
+      tabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                tabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              tabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+
+    
+    document.querySelectorAll('.codetab') ? 
+    document.querySelectorAll('.codetab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var codetabLinks = elem.querySelectorAll('.codetab__link');
+      var codetabContents = elem.querySelectorAll('.codetab__content');
+      var ids = [];
+
+      codetabLinks && codetabLinks.length > 0 ?
+      codetabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                codetabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              codetabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
     
     
+    
+    var enableDarkMode = JSON.parse("true");
     var root = document.getElementById('root');
     var toggleToLightBtn = document.getElementById('toggleToLight');
     var toggleToDarkBtn = document.getElementById('toggleToDark');
 
-    toggleToDark.onclick = function(e) {
-      root.className = 'theme__dark';
-      localStorage.setItem('theme', 'dark');
-      toggleToLightBtn.className = 'navbar__icons--icon';
-      toggleToDarkBtn.className = 'hide';
-    }
-
-    toggleToLight.onclick = function (e) {
+    if (!enableDarkMode) {
       root.className = 'theme__light';
       localStorage.setItem('theme', 'light');
-      toggleToLightBtn.className = 'hide';
-      toggleToDarkBtn.className = 'navbar__icons--icon';
+    }
+    
+    if (toggleToDarkBtn) {
+      toggleToDarkBtn.onclick = function (e) {
+        root.className = 'theme__dark';
+        localStorage.setItem('theme', 'dark');
+        toggleToLightBtn.className = 'navbar__icons--icon';
+        toggleToDarkBtn.className = 'hide';
+      }
     }
 
+    if (toggleToLightBtn) {
+      toggleToLightBtn.onclick = function (e) {
+        root.className = 'theme__light';
+        localStorage.setItem('theme', 'light');
+        toggleToLightBtn.className = 'hide';
+        toggleToDarkBtn.className = 'navbar__icons--icon';
+      }
+    }
 
     
     document.querySelectorAll('.menu__list').forEach(function(elem) {
@@ -156,13 +266,11 @@
 
         var parent = elem.parentNode;
         while (parent.classList.contains('menu__list') && parent.classList.contains('active')) {
-          console.log('parent');
           parent.style.maxHeight = 100 * parent.children.length + "px";
           parent = parent.parentNode;
         }
 
         if (content.style.maxHeight) {
-          console.log('null');
           content.style.maxHeight = null;
           content.classList.remove('active');
           menuTitleIcon.classList.add('right');
@@ -173,7 +281,6 @@
             menuTitleIcon.classList.remove('down');
           }
         } else {
-          console.log('scrollHeight');
           content.style.maxHeight = content.scrollHeight + "px";
           content.classList.add('active');
           menuTitleIcon.classList.remove('right');
@@ -456,7 +563,7 @@
 
   
     
-    var searchURL = JSON.parse("\"http://foowold.com/es/\"");
+    var langprefix = JSON.parse("\"/es\"");
     var searchResults = null;
     var searchMenu = null;
     var searchText = null;
@@ -471,7 +578,7 @@
     if (enableSearch) {
       (function initFuse() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', searchURL + "index.json");
+        xhr.open('GET', baseurl + langprefix + "/index.json");
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         xhr.onload = function () {
           if (xhr.status === 200) {
@@ -831,7 +938,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -867,7 +973,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -954,7 +1059,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -968,22 +1072,22 @@
 <link rel="stylesheet" href="/css/main.min.css">
 
 
-    <link rel="alternate" type="application/rss&#43;xml" title="RSS" href="http://foowold.com/es/blog/index.xml">
+    <link rel="alternate" type="application/rss&#43;xml" title="RSS" href="http://davidmarciel.github.io/es/blog/index.xml">
 <meta name="description" content="Blog list page" />
 <meta name="keywords" content="">
-<meta name="created" content="0001-01-01T00:00:00&#43;0000">
-<meta name="modified" content="0001-01-01T00:00:00&#43;0000">
+<meta name="created" content="2019-03-11T00:00:00&#43;0000">
+<meta name="modified" content="2019-03-11T00:00:00&#43;0000">
 
 
 <meta property="og:site_name" content="Hola Mundo Foo">
 <meta property="og:title" content="Blog">
-<meta property="og:url" content="http://foowold.com/es/blog/">
+<meta property="og:url" content="http://davidmarciel.github.io/es/blog/">
 <meta property="og:type" content="website">
 
 <meta name="generator" content="Hugo 0.68.1" />
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="http://foowold.com/es/blog/">
+<link rel="canonical" href="http://davidmarciel.github.io/es/blog/">
 <link rel="manifest" href="/manifest.json">
 
   <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -1007,17 +1111,17 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "url" : "http://foowold.com/es/blog/",
+    "url" : "http://davidmarciel.github.io/es/blog/",
     "name": "Blog",
     "description": "Blog list page",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http://foowold.com/"
+      "@id": "http://davidmarciel.github.io/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Hola Mundo Foo",
-      "url": "http://foowold.com/"
+      "url": "http://davidmarciel.github.io/"
     }
   }
 </script>
@@ -1026,12 +1130,20 @@
 
 </head>
 
+
 <body id="root" class="theme__dark">
     <script>
+        var rootElem = document.getElementById('root');
+        var themeOptions = JSON.parse("[\"dark\",\"light\"]");
         var localTheme = localStorage.getItem('theme');
+
         if (localTheme) {
-            document.getElementById('root').className = `theme__${localTheme}`;
-        }        
+            if (themeOptions && themeOptions.length > 0) {
+                themeOptions.includes(localTheme) ? 
+                rootElem.className = `theme__${localTheme}` :
+                rootElem.className = `theme__${themeOptions[0]}`;
+            }
+        }
     </script>
     
     <div id="container">
@@ -1055,6 +1167,98 @@
   </h6>
   <ul>
     
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="http://davidmarciel.github.io/es/blog/markdown-syntax/"
+      class="menu__title ">Markdown Syntax Guide</a>
+  </li>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="http://davidmarciel.github.io/es/blog/rich-content/"
+      class="menu__title ">Rich Content</a>
+  </li>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="http://davidmarciel.github.io/es/blog/placeholder-text/"
+      class="menu__title ">Placeholder Text</a>
+  </li>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="http://davidmarciel.github.io/es/blog/emoji-support/"
+      class="menu__title ">Emoji Support</a>
+  </li>
+  
+
     
   </ul>
 </div>
@@ -1264,7 +1468,7 @@
         
           
             
-              <a href="http://foowold.com/en/blog/" data-lang="en" class="lang__dropdown--item">English</a>
+              <a href="http://davidmarciel.github.io/en/blog/" data-lang="en" class="lang__dropdown--item">English</a>
             
           
         
@@ -1282,7 +1486,7 @@
         
           
             
-              <a href="http://foowold.com/es/blog/" data-lang="es" class="lang__dropdown--item active">Español</a>
+              <a href="http://davidmarciel.github.io/es/blog/" data-lang="es" class="lang__dropdown--item active">Español</a>
             
           
         
@@ -1398,9 +1602,10 @@
         
 <div class="top">
   <header class="header__wrapper bgcolor__header">
-    <div class="divider">
-      <div class="lmr">
-        
+    
+      <div class="divider">
+        <div class="lmr">
+          
     
   
     
@@ -1408,17 +1613,17 @@
       
       
         
-        <div class="blog-header__title" style="font-size: px; ;">
-          Blog
-        </div>
+          <div class="blog-header__title" style="font-size: px; ;">
+            Blog
+          </div>
               
       
       
       
          
-        <div class="blog-header__subtitle" style="font-size: px; " data-cursive="">
-          
-        </div>
+          <div class="blog-header__subtitle" style="font-size: px; " data-cursive="">
+            
+          </div>
               
       
     </div>
@@ -1428,27 +1633,268 @@
   
 
 
+        </div>
       </div>
+    
+  </header>
+</div>
+
+<div class="mid blog__bg">
+  <main class="main blog__bg">
+    <div class="sv">
+      <div class="blog-post">
+        
+        
+          <article class="summary-card">
+  <header>
+    <h5 class="title h5"><a href='http://davidmarciel.github.io/es/blog/markdown-syntax/'> Markdown Syntax Guide</a></h5>
+    <div class="subtitle caption">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 4H20V8H4z" opacity=".3"/><path d="M6 1H8V5H6zM16 1H18V5H16z"/><path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M19,19H5V9h14V19z M19,7H5V5h14V7z"/></svg><time title="Written At">Mar 11, 2019 </time> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M 9 1 L 9 3 L 15 3 L 15 1 L 9 1 z M 18.958984 2.7929688 L 17.666016 4.3183594 L 20.615234 6.8183594 L 21.908203 5.2929688 L 18.958984 2.7929688 z M 12 4 C 7.0225467 4 3 8.0225467 3 13 C 3 17.977453 7.0225467 22 12 22 C 16.977453 22 21 17.977453 21 13 C 21 8.0225467 16.977453 4 12 4 z M 12 6 C 15.910547 6 19 9.0894533 19 13 C 19 16.910547 15.910547 20 12 20 C 8.0894533 20 5 16.910547 5 13 C 5 9.0894533 8.0894533 6 12 6 z M 11 8 L 11 14 L 13 14 L 13 8 L 11 8 z"/></svg> <span title="Reading Time"> 3 min read</span> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16"><path fill="currentColor" d="M 16 5 C 12.144531 5 9 8.144531 9 12 C 9 14.410156 10.230469 16.550781 12.09375 17.8125 C 8.527344 19.34375 6 22.882813 6 27 L 8 27 C 8 22.570313 11.570313 19 16 19 C 20.429688 19 24 22.570313 24 27 L 26 27 C 26 22.882813 23.472656 19.34375 19.90625 17.8125 C 21.769531 16.550781 23 14.410156 23 12 C 23 8.144531 19.855469 5 16 5 Z M 16 7 C 18.773438 7 21 9.226563 21 12 C 21 14.773438 18.773438 17 16 17 C 13.226563 17 11 14.773438 11 12 C 11 9.226563 13.226563 7 16 7 Z"/></svg> <span title="WRITTEN BY">Hugo Authors</span>
     </div>
   </header>
   
-  <div class="header__wrapper bgcolor__breadcrumb">
-    <div class="divider">
-      <div class="lmr flexbox jc-center flex-wrap tag__wrapper">
-        
-      </div>
+  <div class="summary-card__content">
+    <div class="summary-card__text p2">
+      
+        <p>Lorem est tota propiore conpellat pectoribus de<br />
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice<br />
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc<br />
+caluere tempus</p>
+      
     </div>
+    
   </div>
+  <div class="summary-card__links">
+    
+      <a href="/es/tags/markdown" class="summary-card__tag">
+        markdown
+      </a>
+    
+      <a href="/es/tags/css" class="summary-card__tag">
+        css
+      </a>
+    
+      <a href="/es/tags/html" class="summary-card__tag">
+        html
+      </a>
+    
+      <a href="/es/tags/themes" class="summary-card__tag">
+        themes
+      </a>
+    
+  </div>
+</article>
+        
+          <article class="summary-card">
+  <header>
+    <h5 class="title h5"><a href='http://davidmarciel.github.io/es/blog/rich-content/'> Rich Content</a></h5>
+    <div class="subtitle caption">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 4H20V8H4z" opacity=".3"/><path d="M6 1H8V5H6zM16 1H18V5H16z"/><path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M19,19H5V9h14V19z M19,7H5V5h14V7z"/></svg><time title="Written At">Mar 10, 2019 </time> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M 9 1 L 9 3 L 15 3 L 15 1 L 9 1 z M 18.958984 2.7929688 L 17.666016 4.3183594 L 20.615234 6.8183594 L 21.908203 5.2929688 L 18.958984 2.7929688 z M 12 4 C 7.0225467 4 3 8.0225467 3 13 C 3 17.977453 7.0225467 22 12 22 C 16.977453 22 21 17.977453 21 13 C 21 8.0225467 16.977453 4 12 4 z M 12 6 C 15.910547 6 19 9.0894533 19 13 C 19 16.910547 15.910547 20 12 20 C 8.0894533 20 5 16.910547 5 13 C 5 9.0894533 8.0894533 6 12 6 z M 11 8 L 11 14 L 13 14 L 13 8 L 11 8 z"/></svg> <span title="Reading Time"> 1 min read</span> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16"><path fill="currentColor" d="M 16 5 C 12.144531 5 9 8.144531 9 12 C 9 14.410156 10.230469 16.550781 12.09375 17.8125 C 8.527344 19.34375 6 22.882813 6 27 L 8 27 C 8 22.570313 11.570313 19 16 19 C 20.429688 19 24 22.570313 24 27 L 26 27 C 26 22.882813 23.472656 19.34375 19.90625 17.8125 C 21.769531 16.550781 23 14.410156 23 12 C 23 8.144531 19.855469 5 16 5 Z M 16 7 C 18.773438 7 21 9.226563 21 12 C 21 14.773438 18.773438 17 16 17 C 13.226563 17 11 14.773438 11 12 C 11 9.226563 13.226563 7 16 7 Z"/></svg> <span title="WRITTEN BY">Hugo Authors</span>
+    </div>
+  </header>
+  
+  <div class="summary-card__content">
+    <div class="summary-card__text p2">
+      
+        <p>Lorem est tota propiore conpellat pectoribus de<br />
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice<br />
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc<br />
+caluere tempus</p>
+      
+    </div>
+    
+    <div class="summary-card__image-wrapper">
+      <a href="http://davidmarciel.github.io/es/blog/rich-content/">
+        <img data-src="/images/mountain.jpg" alt="images/mountain.jpg" src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23aaa' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-4.44-6.19l-2.35 3.02-1.56-1.88c-.2-.25-.58-.24-.78.01l-1.74 2.23c-.26.33-.02.81.39.81h8.98c.41 0 .65-.47.4-.8l-2.55-3.39c-.19-.26-.59-.26-.79 0z'/%3E%3C/svg%3E" class="lazyload summary-card__image"/>
+      </a>
+    </div>
+    
+  </div>
+  <div class="summary-card__links">
+    
+      <a href="/es/tags/shortcodes" class="summary-card__tag">
+        shortcodes
+      </a>
+    
+      <a href="/es/tags/privacy" class="summary-card__tag">
+        privacy
+      </a>
+    
+  </div>
+</article>
+        
+          <article class="summary-card">
+  <header>
+    <h5 class="title h5"><a href='http://davidmarciel.github.io/es/blog/placeholder-text/'> Placeholder Text</a></h5>
+    <div class="subtitle caption">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 4H20V8H4z" opacity=".3"/><path d="M6 1H8V5H6zM16 1H18V5H16z"/><path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M19,19H5V9h14V19z M19,7H5V5h14V7z"/></svg><time title="Written At">Mar 9, 2019 </time> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M 9 1 L 9 3 L 15 3 L 15 1 L 9 1 z M 18.958984 2.7929688 L 17.666016 4.3183594 L 20.615234 6.8183594 L 21.908203 5.2929688 L 18.958984 2.7929688 z M 12 4 C 7.0225467 4 3 8.0225467 3 13 C 3 17.977453 7.0225467 22 12 22 C 16.977453 22 21 17.977453 21 13 C 21 8.0225467 16.977453 4 12 4 z M 12 6 C 15.910547 6 19 9.0894533 19 13 C 19 16.910547 15.910547 20 12 20 C 8.0894533 20 5 16.910547 5 13 C 5 9.0894533 8.0894533 6 12 6 z M 11 8 L 11 14 L 13 14 L 13 8 L 11 8 z"/></svg> <span title="Reading Time"> 2 min read</span> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16"><path fill="currentColor" d="M 16 5 C 12.144531 5 9 8.144531 9 12 C 9 14.410156 10.230469 16.550781 12.09375 17.8125 C 8.527344 19.34375 6 22.882813 6 27 L 8 27 C 8 22.570313 11.570313 19 16 19 C 20.429688 19 24 22.570313 24 27 L 26 27 C 26 22.882813 23.472656 19.34375 19.90625 17.8125 C 21.769531 16.550781 23 14.410156 23 12 C 23 8.144531 19.855469 5 16 5 Z M 16 7 C 18.773438 7 21 9.226563 21 12 C 21 14.773438 18.773438 17 16 17 C 13.226563 17 11 14.773438 11 12 C 11 9.226563 13.226563 7 16 7 Z"/></svg> <span title="WRITTEN BY">Hugo Authors</span>
+    </div>
+  </header>
+  
+  <div class="summary-card__content">
+    <div class="summary-card__text p2">
+      
+        <p>Lorem est tota propiore conpellat pectoribus de<br />
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice<br />
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc<br />
+caluere tempus</p>
+      
+    </div>
+    
+    <div class="summary-card__image-wrapper">
+      <a href="http://davidmarciel.github.io/es/blog/placeholder-text/">
+        <img data-src="/images/landscape.jpg" alt="images/landscape.jpg" src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23aaa' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-4.44-6.19l-2.35 3.02-1.56-1.88c-.2-.25-.58-.24-.78.01l-1.74 2.23c-.26.33-.02.81.39.81h8.98c.41 0 .65-.47.4-.8l-2.55-3.39c-.19-.26-.59-.26-.79 0z'/%3E%3C/svg%3E" class="lazyload summary-card__image"/>
+      </a>
+    </div>
+    
+  </div>
+  <div class="summary-card__links">
+    
+      <a href="/es/tags/markdown" class="summary-card__tag">
+        markdown
+      </a>
+    
+      <a href="/es/tags/text" class="summary-card__tag">
+        text
+      </a>
+    
+  </div>
+</article>
+        
+          <article class="summary-card">
+  <header>
+    <h5 class="title h5"><a href='http://davidmarciel.github.io/es/blog/emoji-support/'> Emoji Support</a></h5>
+    <div class="subtitle caption">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 4H20V8H4z" opacity=".3"/><path d="M6 1H8V5H6zM16 1H18V5H16z"/><path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M19,19H5V9h14V19z M19,7H5V5h14V7z"/></svg><time title="Written At">Mar 5, 2019 </time> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M 9 1 L 9 3 L 15 3 L 15 1 L 9 1 z M 18.958984 2.7929688 L 17.666016 4.3183594 L 20.615234 6.8183594 L 21.908203 5.2929688 L 18.958984 2.7929688 z M 12 4 C 7.0225467 4 3 8.0225467 3 13 C 3 17.977453 7.0225467 22 12 22 C 16.977453 22 21 17.977453 21 13 C 21 8.0225467 16.977453 4 12 4 z M 12 6 C 15.910547 6 19 9.0894533 19 13 C 19 16.910547 15.910547 20 12 20 C 8.0894533 20 5 16.910547 5 13 C 5 9.0894533 8.0894533 6 12 6 z M 11 8 L 11 14 L 13 14 L 13 8 L 11 8 z"/></svg> <span title="Reading Time"> 1 min read</span> &nbsp;&nbsp; <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16"><path fill="currentColor" d="M 16 5 C 12.144531 5 9 8.144531 9 12 C 9 14.410156 10.230469 16.550781 12.09375 17.8125 C 8.527344 19.34375 6 22.882813 6 27 L 8 27 C 8 22.570313 11.570313 19 16 19 C 20.429688 19 24 22.570313 24 27 L 26 27 C 26 22.882813 23.472656 19.34375 19.90625 17.8125 C 21.769531 16.550781 23 14.410156 23 12 C 23 8.144531 19.855469 5 16 5 Z M 16 7 C 18.773438 7 21 9.226563 21 12 C 21 14.773438 18.773438 17 16 17 C 13.226563 17 11 14.773438 11 12 C 11 9.226563 13.226563 7 16 7 Z"/></svg> <span title="WRITTEN BY">Hugo Authors</span>
+    </div>
+  </header>
+  
+  <div class="summary-card__content">
+    <div class="summary-card__text p2">
+      
+        <p>Lorem est tota propiore conpellat pectoribus de<br />
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice<br />
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc<br />
+caluere tempus</p>
+      
+    </div>
+    
+    <div class="summary-card__image-wrapper">
+      <a href="http://davidmarciel.github.io/es/blog/emoji-support/">
+        <img data-src="/images/mountains.jpg" alt="images/mountains.jpg" src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23aaa' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-4.44-6.19l-2.35 3.02-1.56-1.88c-.2-.25-.58-.24-.78.01l-1.74 2.23c-.26.33-.02.81.39.81h8.98c.41 0 .65-.47.4-.8l-2.55-3.39c-.19-.26-.59-.26-.79 0z'/%3E%3C/svg%3E" class="lazyload summary-card__image"/>
+      </a>
+    </div>
+    
+  </div>
+  <div class="summary-card__links">
+    
+      <a href="/es/tags/emoji" class="summary-card__tag">
+        emoji
+      </a>
+    
+  </div>
+</article>
+        
+        
+
+
+      </div>
+      <div class="blog-tags">
+        
+<h6 class="tag-cloud__label">
+  Blog
+</h6>
+<div class="tag-cloud__tags">
+  
+    
+      <a href="/es/tags/css/" class="tag">
+        <span class="tag__text" style="font-size: 1.05rem;">
+          css
+        </span>
+        <span class="tag__num" style="font-size: 1.05rem;" dir="auto">
+          (2)
+        </span>
+      </a>
+    
+  
+    
+      <a href="/es/tags/emoji/" class="tag">
+        <span class="tag__text" style="font-size: 0.925rem;">
+          emoji
+        </span>
+        <span class="tag__num" style="font-size: 0.925rem;" dir="auto">
+          (1)
+        </span>
+      </a>
+    
+  
+    
+      <a href="/es/tags/html/" class="tag">
+        <span class="tag__text" style="font-size: 1.05rem;">
+          html
+        </span>
+        <span class="tag__num" style="font-size: 1.05rem;" dir="auto">
+          (2)
+        </span>
+      </a>
+    
+  
+    
+      <a href="/es/tags/markdown/" class="tag">
+        <span class="tag__text" style="font-size: 1.175rem;">
+          markdown
+        </span>
+        <span class="tag__num" style="font-size: 1.175rem;" dir="auto">
+          (3)
+        </span>
+      </a>
+    
+  
+    
+      <a href="/es/tags/privacy/" class="tag">
+        <span class="tag__text" style="font-size: 0.925rem;">
+          privacy
+        </span>
+        <span class="tag__num" style="font-size: 0.925rem;" dir="auto">
+          (1)
+        </span>
+      </a>
+    
+  
+    
+      <a href="/es/tags/shortcodes/" class="tag">
+        <span class="tag__text" style="font-size: 0.925rem;">
+          shortcodes
+        </span>
+        <span class="tag__num" style="font-size: 0.925rem;" dir="auto">
+          (1)
+        </span>
+      </a>
+    
+  
+    
+      <a href="/es/tags/text/" class="tag">
+        <span class="tag__text" style="font-size: 0.925rem;">
+          text
+        </span>
+        <span class="tag__num" style="font-size: 0.925rem;" dir="auto">
+          (1)
+        </span>
+      </a>
+    
+  
+    
+      <a href="/es/tags/themes/" class="tag">
+        <span class="tag__text" style="font-size: 1.05rem;">
+          themes
+        </span>
+        <span class="tag__num" style="font-size: 1.05rem;" dir="auto">
+          (2)
+        </span>
+      </a>
+    
+  
 </div>
-<div class="mid blog__bg">
-  <main class="main blog__bg">
-    <div class="sv" data-view="full">
-      <div class="blog">
-        
-        
-        
-
-
       </div>
     </div>
   </main>
@@ -1456,27 +1902,33 @@
 
 <script>
   var singleViewElem = document.querySelectorAll('.sv');
+  var postElem = document.querySelector('.blog-post');
+  var tagsElem = document.querySelector('.blog-tags');
 
   enquire.register("screen and (max-width:1280px)", {
     match: function () {
       singleViewElem.forEach(function(elem) {
-        elem.setAttribute('data-view', 'full');
+        postElem.className = "blog-post";
+        tagsElem.className = "blog-tags";
       });
     },
     unmatch: function () {
       singleViewElem.forEach(function (elem) {
-        elem.setAttribute('data-view', 'full');
+        postElem.className = "blog-post";
+        tagsElem.className = "blog-tags";
       });
     },
   }).register("screen and (max-width:769px)", {
     match: function () {
       singleViewElem.forEach(function (elem) {
-        elem.setAttribute('data-view', 'mobile');
+        postElem.className = "blog-total";
+        tagsElem.className = "hide";
       });
     },
     unmatch: function () {
       singleViewElem.forEach(function (elem) {
-        elem.setAttribute('data-view', 'full');
+        postElem.className = "blog-post";
+        tagsElem.className = "blog-tags";
       });
     },
   });
@@ -1489,7 +1941,7 @@
       <div class="lmr">
         
           <p class="caption">
-            ©2020, All Rights Reserved
+            ©2022, All Rights Reserved
           </p>
           
               <p class="caption">Powered by <a href="https://gohugo.io/" rel="noreferrer">Hugo</a> and the <a href="https://github.com/zzossig/hugo-theme-zdoc" rel="noreferrer">zDoc theme</a></p>

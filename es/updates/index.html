@@ -8,11 +8,14 @@
     
 
 
-<script src="/js/enquire.min.aa37bdcb743826eecdae5c5d177fc7d6552340f1b4378ffaa9c82b2c6111400b.js"></script>
+  
+  <script defer src="/js/fuse.min.94c78ad70b02749822921660cf4e9f0b3701bc0680c421afb784a78228de0275.js"></script>
 
-<script defer src="/js/fuse.min.c4bee9a8d44273d6154fe86006923d4131eb2e8069d8897687137c6f37f553e3.js"></script>
 
-<script defer src="/js/lazysizes.min.5e11d056075a05065b9c0bfec44084a113fc2976c2952ec804dedb61c7662db9.js"></script>
+
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
+
+<script defer src="/js/lazysizes.min.31dd6a2d3a1ec0f78a8df007535cf23f03aeb5c70f026e6d6a19dac3b3acc340.js"></script>
 
 <script defer src="/js/helper/getParents.min.1618c696be7c98933f9a92677f518b512a74e55bdbb976b09936b4182e93181b.js"></script>
 
@@ -21,17 +24,22 @@
 <script>
   "use strict";
 
-  
-  var languagedir = JSON.parse("\"ltr\"");
-
   window.onload = function() {
+    
+    var languagedir = JSON.parse("\"ltr\"");
+    
+    var baseurl = JSON.parse("\"http://davidmarciel.github.io/\"");
+    
+    var permalink = JSON.parse("\"http://davidmarciel.github.io/es/updates/\"");
 
     
     var toggleSidebarElem = document.getElementById("toggle-sidebar");
+    var toggleMenuElem = document.getElementById("toggle-menu");
     var tocBodyElem = document.querySelector('.toc__body');
     var tocLabelElem = document.querySelector('.toc__label');
     var listMainElem = document.getElementById('list-main');
     var listSideElem = document.getElementById('list-side');
+    var singleMenuElem = document.getElementById('single-menu');
     var sliderIcons = document.querySelectorAll('.slider__icon');
 
     toggleSidebarElem ?
@@ -77,7 +85,40 @@
           });
         }
       }) : null;
+
+    toggleMenuElem ?
+      toggleMenuElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'm';
+            singleMenuElem.className = 'l';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'lm';
+            singleMenuElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
     
+
 
     
     var navCollapseBtn = document.getElementById('navCollapseBtn');
@@ -118,26 +159,95 @@
     }
     
 
+
+
+    
+    document.querySelectorAll('.tab') ? 
+    document.querySelectorAll('.tab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var tabLinks = elem.querySelectorAll('.tab__link');
+      var tabContents = elem.querySelectorAll('.tab__content');
+      var ids = [];
+
+      tabLinks && tabLinks.length > 0 ?
+      tabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                tabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              tabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+
+    
+    document.querySelectorAll('.codetab') ? 
+    document.querySelectorAll('.codetab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var codetabLinks = elem.querySelectorAll('.codetab__link');
+      var codetabContents = elem.querySelectorAll('.codetab__content');
+      var ids = [];
+
+      codetabLinks && codetabLinks.length > 0 ?
+      codetabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                codetabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              codetabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
     
     
+    
+    var enableDarkMode = JSON.parse("true");
     var root = document.getElementById('root');
     var toggleToLightBtn = document.getElementById('toggleToLight');
     var toggleToDarkBtn = document.getElementById('toggleToDark');
 
-    toggleToDark.onclick = function(e) {
-      root.className = 'theme__dark';
-      localStorage.setItem('theme', 'dark');
-      toggleToLightBtn.className = 'navbar__icons--icon';
-      toggleToDarkBtn.className = 'hide';
-    }
-
-    toggleToLight.onclick = function (e) {
+    if (!enableDarkMode) {
       root.className = 'theme__light';
       localStorage.setItem('theme', 'light');
-      toggleToLightBtn.className = 'hide';
-      toggleToDarkBtn.className = 'navbar__icons--icon';
+    }
+    
+    if (toggleToDarkBtn) {
+      toggleToDarkBtn.onclick = function (e) {
+        root.className = 'theme__dark';
+        localStorage.setItem('theme', 'dark');
+        toggleToLightBtn.className = 'navbar__icons--icon';
+        toggleToDarkBtn.className = 'hide';
+      }
     }
 
+    if (toggleToLightBtn) {
+      toggleToLightBtn.onclick = function (e) {
+        root.className = 'theme__light';
+        localStorage.setItem('theme', 'light');
+        toggleToLightBtn.className = 'hide';
+        toggleToDarkBtn.className = 'navbar__icons--icon';
+      }
+    }
 
     
     document.querySelectorAll('.menu__list').forEach(function(elem) {
@@ -156,13 +266,11 @@
 
         var parent = elem.parentNode;
         while (parent.classList.contains('menu__list') && parent.classList.contains('active')) {
-          console.log('parent');
           parent.style.maxHeight = 100 * parent.children.length + "px";
           parent = parent.parentNode;
         }
 
         if (content.style.maxHeight) {
-          console.log('null');
           content.style.maxHeight = null;
           content.classList.remove('active');
           menuTitleIcon.classList.add('right');
@@ -173,7 +281,6 @@
             menuTitleIcon.classList.remove('down');
           }
         } else {
-          console.log('scrollHeight');
           content.style.maxHeight = content.scrollHeight + "px";
           content.classList.add('active');
           menuTitleIcon.classList.remove('right');
@@ -456,7 +563,7 @@
 
   
     
-    var searchURL = JSON.parse("\"http://foowold.com/es/\"");
+    var langprefix = JSON.parse("\"/es\"");
     var searchResults = null;
     var searchMenu = null;
     var searchText = null;
@@ -471,7 +578,7 @@
     if (enableSearch) {
       (function initFuse() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', searchURL + "index.json");
+        xhr.open('GET', baseurl + langprefix + "/index.json");
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         xhr.onload = function () {
           if (xhr.status === 200) {
@@ -831,7 +938,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -867,7 +973,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -954,7 +1059,6 @@
       var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
       dropdownItems ? dropdownItems.forEach(function (item) {
         item.addEventListener('mousedown', function (e) {
-          console.log('mousedown');
           e.target.click();
         });
       }) : null;
@@ -968,7 +1072,7 @@
 <link rel="stylesheet" href="/css/main.min.css">
 
 
-    <link rel="alternate" type="application/rss&#43;xml" title="RSS" href="http://foowold.com/es/updates/index.xml">
+    <link rel="alternate" type="application/rss&#43;xml" title="RSS" href="http://davidmarciel.github.io/es/updates/index.xml">
 <meta name="description" content="test post index" />
 <meta name="keywords" content="">
 <meta name="created" content="2020-01-28T00:08:29&#43;0900">
@@ -977,13 +1081,13 @@
 
 <meta property="og:site_name" content="Hola Mundo Foo">
 <meta property="og:title" content="Updates">
-<meta property="og:url" content="http://foowold.com/es/updates/">
+<meta property="og:url" content="http://davidmarciel.github.io/es/updates/">
 <meta property="og:type" content="website">
 
 <meta name="generator" content="Hugo 0.68.1" />
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
-<link rel="canonical" href="http://foowold.com/es/updates/">
+<link rel="canonical" href="http://davidmarciel.github.io/es/updates/">
 <link rel="manifest" href="/manifest.json">
 
   <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -1007,17 +1111,17 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "url" : "http://foowold.com/es/updates/",
+    "url" : "http://davidmarciel.github.io/es/updates/",
     "name": "Updates",
     "description": "test post index",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http://foowold.com/"
+      "@id": "http://davidmarciel.github.io/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Hola Mundo Foo",
-      "url": "http://foowold.com/"
+      "url": "http://davidmarciel.github.io/"
     }
   }
 </script>
@@ -1026,12 +1130,20 @@
 
 </head>
 
+
 <body id="root" class="theme__dark">
     <script>
+        var rootElem = document.getElementById('root');
+        var themeOptions = JSON.parse("[\"dark\",\"light\"]");
         var localTheme = localStorage.getItem('theme');
+
         if (localTheme) {
-            document.getElementById('root').className = `theme__${localTheme}`;
-        }        
+            if (themeOptions && themeOptions.length > 0) {
+                themeOptions.includes(localTheme) ? 
+                rootElem.className = `theme__${localTheme}` :
+                rootElem.className = `theme__${themeOptions[0]}`;
+            }
+        }
     </script>
     
     <div id="container">
@@ -1264,7 +1376,7 @@
         
           
             
-              <a href="http://foowold.com/en/updates/" data-lang="en" class="lang__dropdown--item">English</a>
+              <a href="http://davidmarciel.github.io/en/updates/" data-lang="en" class="lang__dropdown--item">English</a>
             
           
         
@@ -1282,7 +1394,7 @@
         
           
             
-              <a href="http://foowold.com/es/updates/" data-lang="es" class="lang__dropdown--item active">Español</a>
+              <a href="http://davidmarciel.github.io/es/updates/" data-lang="es" class="lang__dropdown--item active">Español</a>
             
           
         
@@ -1409,6 +1521,7 @@
       <div class="lmr flexbox">
         
           <nav class="breadcrumb" aria-label="breadcrumbs" data-is-blog="false">
+  
   <ol>
     
   
@@ -1416,7 +1529,7 @@
   
   <li >
     
-      <a href="http://foowold.com/es/" class="capitalize">ZDoc</a>
+      <a href="http://davidmarciel.github.io/es/" class="capitalize">ZDoc</a>
     
   </li>
   
@@ -1433,6 +1546,22 @@
         
         <div class="grow"></div>
         
+  <label class="switch switch__rel">
+    
+      <input id="toggle-sidebar" aria-label="Toggle Sidebar Visibility" type="checkbox" checked />
+      <span class="slider">
+        <span class="slider__icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </span>
+        <span class="slider__icon hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+        </span>
+      </span>
+    
+    
+  </label>
+
+        
       </div>
     </div>
   </div>
@@ -1440,7 +1569,8 @@
 
         
   
-  <div class="mid">
+  
+<div class="mid">
   <div class="divider">
 
     <nav id="list-menu" class="l" data-dir="ltr">
@@ -1484,19 +1614,6 @@
     </nav>
 
     <article id="list-main" class="m" data-dir="ltr">
-      
-  <label class="switch">
-    <input id="toggle-sidebar" aria-label="Toggle Sidebar Visibility" type="checkbox" checked />
-    <span class="slider">
-      <span class="slider__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
-      </span>
-      <span class="slider__icon hide">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
-      </span>
-    </span>
-  </label>
-
       <div class="single" data-display="block">
   
 
@@ -1517,42 +1634,312 @@
 </div>
 
 <script>
-  var listSide = document.getElementById('list-side');
-  var listMain = document.getElementById('list-main');
-  var listMenu = document.getElementById('list-menu');
+  'use strict';
   
+  function wrap(el, wrapper) {
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+  }
+
+  (function () {
+    var singleContentsElem = document.querySelector('.single__contents');
+    singleContentsElem ? 
+    singleContentsElem.querySelectorAll('pre > code').forEach(function(elem) {
+      var dataLang = elem.getAttribute('data-lang');
+      var dataLangWrapper = document.createElement('div');
+      var code = null;
+      var codeTitle = null;
+
+      if (dataLang && dataLang.includes(':')) {
+        code = dataLang.split(':')[0];
+        codeTitle = dataLang.split(':')[1];
+
+        dataLangWrapper.className = 'language-' + code;
+        dataLangWrapper.setAttribute('data-lang', codeTitle);
+
+        elem.className = 'language-' + code;
+        elem.setAttribute('data-lang', codeTitle);
+        elem.setAttribute('id', codeTitle);
+      }
+
+      if (!dataLang || codeTitle) {
+        wrap(elem.parentNode, dataLangWrapper);
+      }
+
+    }) : null;
+  })();
+  
+
+
+  
+  
+  var dollarCodeElem = document.querySelectorAll('div.language-\\$');
+  var gtCodeElem = document.querySelectorAll('div.language-\\>');
+  
+  dollarCodeElem ?
+  dollarCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '$<br/>';
+    }) : null;
+  }) : null;
+
+  gtCodeElem ?
+  gtCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '><br/>';
+    }) : null;
+  }) : null;
+  
+</script>
+
+
+
+
+<script defer src="/js/helper/getParents.min.js"></script>
+
+<script defer src="/js/helper/closest.min.js"></script>
+
+<script defer src="/js/helper/prev.min.js"></script>
+
+<script defer src="/js/helper/prop.min.js"></script>
+
+<script defer src="/js/helper/fadeinout.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+    
+    
+    var tables = document.querySelectorAll('.single__contents > table');
+    for (let i = 0; i < tables.length; i++) {
+      var table = tables[i];
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentElement.replaceChild(wrapper, table);
+      wrapper.appendChild(table);
+    }
+    
+
+
+    
+    
+    
+    var lib = JSON.parse("null");
+
+    if (lib && lib.includes('mermaid')) {
+      var themeVariant = localStorage.getItem('theme') || 'light';
+
+      if (themeVariant === "dark") {
+        mermaid.initialize({ theme: 'dark' });
+      } else {
+        mermaid.initialize({ theme: 'default' });
+      }
+      
+      var mermaids = [];
+      [].push.apply(mermaids, document.getElementsByClassName('language-mermaid'));
+      mermaids.forEach(function(elem) {
+        var elemParentNode = elem.parentNode;
+
+        if (elemParentNode !== document.body) {
+          elemParentNode.parentNode.insertBefore(elem, elemParentNode);
+          elemParentNode.parentNode.removeChild(elemParentNode);
+        }
+
+        var newElemWrapper = document.createElement('div');
+        newElemWrapper.classList.add('mermaid');
+        newElemWrapper.innerHTML = elem.innerHTML;
+        elem.replaceWith(newElemWrapper);
+      });
+    }
+    
+    
+
+    
+    if (lib && lib.includes('katex')) {
+      var mathElements = document.getElementsByClassName('math');
+      var options = {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ],
+      };
+
+      renderMathInElement(document.querySelector('.single__contents'), options);
+    }
+    
+
+
+    
+    if (lib && lib.includes('flowchartjs')) {
+      
+      var options = JSON.parse("null");
+      var jsonContent = null;
+
+      var flowchartPrefix = "language-flowchart";
+      var index = 0;
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + flowchartPrefix + "]"), function(x){
+          x.style.display = 'none'
+          x.parentNode.style.backgroundColor = "transparent"
+          jsonContent = x.innerText;
+
+          var node0 = document.createElement('div');
+          node0.id = 'flowchart' + index;
+          x.parentNode.insertBefore(node0, x);
+
+          var diagram = flowchart.parse(jsonContent);
+          diagram.drawSVG("flowchart"+index, options);
+
+          index +=1;
+      });      
+    }
+    
+
+
+    
+    if (lib && lib.includes('chart')) {
+      var borderColor = "#666";
+      var bgColor = "#ddd";
+      var borderWidth = 2;
+
+      Chart.defaults.global.elements.rectangle.borderWidth = borderWidth;
+      Chart.defaults.global.elements.rectangle.borderColor = borderColor;
+      Chart.defaults.global.elements.rectangle.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.line.borderWidth = borderWidth;
+      Chart.defaults.global.elements.line.borderColor = borderColor;
+      Chart.defaults.global.elements.line.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.point.borderWidth = borderWidth;
+      Chart.defaults.global.elements.point.borderColor = borderColor;
+      Chart.defaults.global.elements.point.backgroundColor = bgColor;
+
+      var chartPrefix = "language-chart";
+      var index = 0;
+      var jsonContent = null;
+
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + chartPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        jsonContent = x.innerText;
+        var node0 = document.createElement('canvas');
+        var source = null;
+        node0.height = 200;
+        node0.style.height = 200;
+        node0.id = 'myChart' + index;
+        source = JSON.parse(jsonContent);
+        x.parentNode.insertBefore(node0, x);
+        var ctx = document.getElementById('myChart' + index).getContext('2d');
+        var myChart = new Chart(ctx, source);
+        index += 1;
+      });            
+    }
+    
+
+
+    
+    if (lib && lib.includes('viz')) {
+      var vizPrefix = "language-viz-";
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + vizPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        var engine;
+        x.getAttribute("class").split(" ").forEach(function (cls) {
+          if (cls.startsWith(vizPrefix)) {
+            engine = cls.substr(vizPrefix.length);
+          }
+        });
+        var viz = new Viz();
+        viz.renderSVGElement(x.innerText, { engine: engine })
+          .then(function (element) {
+            element.style.width = "100%";
+            x.parentNode.insertBefore(element, x);
+          })
+      });
+    }
+    
+    
+  });
+</script>
+
+<script>
+  var listMenu = document.getElementById('list-menu');
+  var listMain = document.getElementById('list-main');
+  var listSide = document.getElementById('list-side');
+  var switchElem = document.querySelector('.switch');
+  var wideViewAsDefault = JSON.parse("null");
+
   enquire.register("screen and (max-width:1280px)", {
     match: function () {
-      listSide.className = 'r';
-      listMain.className = 'm';
-      listMenu.className = 'l';
+      if (wideViewAsDefault) {
+        listMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        listMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
     },
     unmatch: function () {
-      listSide.className = 'r';
-      listMain.className = 'm';
-      listMenu.className = 'l';
+      if (wideViewAsDefault) {
+        listMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        listMenu.className = 'l';
+        listSide.className = 'r';
+        listMain.className = 'm';
+      }
     },
   }).register("screen and (max-width:960px)", {
     match: function () {
-      listSide.className = 'hide';
-      listMain.className = 'mr';
       listMenu.className = 'l';
+      listMain.className = 'mr';
+      listSide.className = 'hide';
+      switchElem.className = 'hide';
     },
     unmatch: function () {
-      listSide.className = 'r';
-      listMain.className = 'm';
-      listMenu.className = 'l';
+      if (wideViewAsDefault) {
+        listMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        listMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
+      
+      switchElem.className = 'switch';
     },
   }).register("screen and (max-width:600px)", {
     match: function () {
-      listSide.className = 'hide';
-      listMain.className = 'lmr';
       listMenu.className = 'hide';
+      listMain.className = 'lmr';
+      listSide.className = 'hide';
+      switchElem.className = 'hide';
     },
     unmatch: function () {
-      listSide.className = 'hide';
-      listMain.className = 'mr';
       listMenu.className = 'l';
+      listMain.className = 'mr';
+      listSide.className = 'hide';
+      switchElem.className = 'hide';
     },
   });
 </script>
@@ -1564,7 +1951,7 @@
       <div class="lmr">
         
           <p class="caption">
-            ©2020, All Rights Reserved
+            ©2022, All Rights Reserved
           </p>
           
               <p class="caption">Powered by <a href="https://gohugo.io/" rel="noreferrer">Hugo</a> and the <a href="https://github.com/zzossig/hugo-theme-zdoc" rel="noreferrer">zDoc theme</a></p>

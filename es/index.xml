@@ -2,61 +2,154 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ZDoc on Hola Mundo Foo</title>
-    <link>http://foowold.com/es/</link>
+    <link>http://davidmarciel.github.io/es/</link>
     <description>Recent content in ZDoc on Hola Mundo Foo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
     <lastBuildDate>Sun, 26 Jan 2020 04:15:05 +0900</lastBuildDate>
     
-        <atom:link href="http://foowold.com/es/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://davidmarciel.github.io/es/index.xml" rel="self" type="application/rss+xml" />
     
     
     
       
       <item>
         <title>Types of Inner Classes in Java</title>
-        <link>http://foowold.com/es/docs/java/class-design/typesofinnerclasses/</link>
+        <link>http://davidmarciel.github.io/es/docs/java/class-design/typesofinnerclasses/</link>
         <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
         
-        <guid>http://foowold.com/es/docs/java/class-design/typesofinnerclasses/</guid>
+        <guid>http://davidmarciel.github.io/es/docs/java/class-design/typesofinnerclasses/</guid>
         <description>  Local Inner Class Member Inner Class Static Inner Class Anonymous Inner Class </description>
       </item>
       
       <item>
         <title>Local Inner Class</title>
-        <link>http://foowold.com/es/docs/java/class-design/localinnerclass/</link>
+        <link>http://davidmarciel.github.io/es/docs/java/class-design/localinnerclass/</link>
         <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
         
-        <guid>http://foowold.com/es/docs/java/class-design/localinnerclass/</guid>
+        <guid>http://davidmarciel.github.io/es/docs/java/class-design/localinnerclass/</guid>
         <description>  Local Inner Class </description>
       </item>
       
       <item>
         <title>Member Inner Class</title>
-        <link>http://foowold.com/es/docs/java/class-design/memberinnerclass/</link>
+        <link>http://davidmarciel.github.io/es/docs/java/class-design/memberinnerclass/</link>
         <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
         
-        <guid>http://foowold.com/es/docs/java/class-design/memberinnerclass/</guid>
+        <guid>http://davidmarciel.github.io/es/docs/java/class-design/memberinnerclass/</guid>
         <description>  Member Inner Class </description>
       </item>
       
       <item>
         <title>Static Inner Class</title>
-        <link>http://foowold.com/es/docs/java/class-design/staticinnerclass/</link>
+        <link>http://davidmarciel.github.io/es/docs/java/class-design/staticinnerclass/</link>
         <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
         
-        <guid>http://foowold.com/es/docs/java/class-design/staticinnerclass/</guid>
+        <guid>http://davidmarciel.github.io/es/docs/java/class-design/staticinnerclass/</guid>
         <description>  Static Inner Class </description>
       </item>
       
       <item>
         <title>Anonymous Inner Class</title>
-        <link>http://foowold.com/es/docs/java/class-design/anonymousinnerclass/</link>
+        <link>http://davidmarciel.github.io/es/docs/java/class-design/anonymousinnerclass/</link>
         <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
         
-        <guid>http://foowold.com/es/docs/java/class-design/anonymousinnerclass/</guid>
+        <guid>http://davidmarciel.github.io/es/docs/java/class-design/anonymousinnerclass/</guid>
         <description>  Anonymous Inner Class </description>
+      </item>
+      
+      <item>
+        <title>Markdown Syntax</title>
+        <link>http://davidmarciel.github.io/es/es/posts/markdown-syntax/</link>
+        <pubDate>Wed, 26 Feb 2020 13:03:43 +0100</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/es/posts/markdown-syntax/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>Markdown Syntax</title>
+        <link>http://davidmarciel.github.io/es/posts/markdown-syntax/</link>
+        <pubDate>Wed, 26 Feb 2020 13:03:43 +0100</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/posts/markdown-syntax/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>About</title>
+        <link>http://davidmarciel.github.io/es/about/</link>
+        <pubDate>Wed, 26 Feb 2020 13:03:05 +0100</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/about/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>About</title>
+        <link>http://davidmarciel.github.io/es/es/about/</link>
+        <pubDate>Wed, 26 Feb 2020 13:03:05 +0100</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/es/about/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>Markdown Syntax Guide</title>
+        <link>http://davidmarciel.github.io/es/blog/markdown-syntax/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/blog/markdown-syntax/</guid>
+        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
+caluere tempus&lt;/p&gt;</description>
+      </item>
+      
+      <item>
+        <title>Section</title>
+        <link>http://davidmarciel.github.io/es/docs/sections/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/docs/sections/</guid>
+        <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+      </item>
+      
+      <item>
+        <title>Rich Content</title>
+        <link>http://davidmarciel.github.io/es/blog/rich-content/</link>
+        <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/blog/rich-content/</guid>
+        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
+caluere tempus&lt;/p&gt;</description>
+      </item>
+      
+      <item>
+        <title>Placeholder Text</title>
+        <link>http://davidmarciel.github.io/es/blog/placeholder-text/</link>
+        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/blog/placeholder-text/</guid>
+        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
+caluere tempus&lt;/p&gt;</description>
+      </item>
+      
+      <item>
+        <title>Emoji Support</title>
+        <link>http://davidmarciel.github.io/es/blog/emoji-support/</link>
+        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/blog/emoji-support/</guid>
+        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
+pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
+subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
+caluere tempus&lt;/p&gt;</description>
       </item>
       
     

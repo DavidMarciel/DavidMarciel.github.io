@@ -2,25 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docs on Hola Mundo Foo</title>
-    <link>http://foowold.com/es/docs/</link>
+    <link>http://davidmarciel.github.io/es/docs/</link>
     <description>Recent content in Docs on Hola Mundo Foo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
     <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
     
-        <atom:link href="http://foowold.com/es/docs/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://davidmarciel.github.io/es/docs/index.xml" rel="self" type="application/rss+xml" />
     
     
     
       
       <item>
         <title>Java</title>
-        <link>http://foowold.com/es/docs/java/</link>
+        <link>http://davidmarciel.github.io/es/docs/java/</link>
         <pubDate>Fri, 28 Feb 2020 00:36:39 +0900</pubDate>
         
-        <guid>http://foowold.com/es/docs/java/</guid>
+        <guid>http://davidmarciel.github.io/es/docs/java/</guid>
         <description></description>
+      </item>
+      
+      <item>
+        <title>Section</title>
+        <link>http://davidmarciel.github.io/es/docs/sections/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://davidmarciel.github.io/es/docs/sections/</guid>
+        <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
       </item>
       
     

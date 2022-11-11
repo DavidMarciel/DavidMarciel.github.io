@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java Class Design on Hello Foo World</title>
+    <link>http://davidmarciel.github.io/ko/es/docs/java/class-design/</link>
+    <description>Recent content in Java Class Design on Hello Foo World</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 22 Mar 2020 00:36:39 +0900</lastBuildDate>
+    
+        <atom:link href="http://davidmarciel.github.io/ko/es/docs/java/class-design/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>Types of Inner Classes in Java</title>
+        <link>http://davidmarciel.github.io/ko/es/docs/java/class-design/typesofinnerclasses/</link>
+        <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
+        
+        <guid>http://davidmarciel.github.io/ko/es/docs/java/class-design/typesofinnerclasses/</guid>
+        <description>  Local Inner Class Member Inner Class Static Inner Class Anonymous Inner Class </description>
+      </item>
+      
+      <item>
+        <title>Local Inner Class</title>
+        <link>http://davidmarciel.github.io/ko/es/docs/java/class-design/localinnerclass/</link>
+        <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
+        
+        <guid>http://davidmarciel.github.io/ko/es/docs/java/class-design/localinnerclass/</guid>
+        <description>  Local Inner Class </description>
+      </item>
+      
+      <item>
+        <title>Member Inner Class</title>
+        <link>http://davidmarciel.github.io/ko/es/docs/java/class-design/memberinnerclass/</link>
+        <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
+        
+        <guid>http://davidmarciel.github.io/ko/es/docs/java/class-design/memberinnerclass/</guid>
+        <description>  Member Inner Class </description>
+      </item>
+      
+      <item>
+        <title>Static Inner Class</title>
+        <link>http://davidmarciel.github.io/ko/es/docs/java/class-design/staticinnerclass/</link>
+        <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
+        
+        <guid>http://davidmarciel.github.io/ko/es/docs/java/class-design/staticinnerclass/</guid>
+        <description>  Static Inner Class </description>
+      </item>
+      
+      <item>
+        <title>Anonymous Inner Class</title>
+        <link>http://davidmarciel.github.io/ko/es/docs/java/class-design/anonymousinnerclass/</link>
+        <pubDate>Sun, 22 Mar 2020 00:34:56 +0900</pubDate>
+        
+        <guid>http://davidmarciel.github.io/ko/es/docs/java/class-design/anonymousinnerclass/</guid>
+        <description>  Anonymous Inner Class </description>
+      </item>
+      
+    
+  </channel>
+</rss>

@@ -3,72 +3,273 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://foowold.com/ko/doc/singlepage/</loc>
+    <loc>http://davidmarciel.github.io/ko/doc/singlepage/</loc>
     <lastmod>2020-01-28T00:38:51+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/doc/gettingstarted/</loc>
+    <loc>http://davidmarciel.github.io/ko/doc/gettingstarted/</loc>
     <lastmod>2020-01-28T00:36:39+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/</loc>
-    <lastmod>2020-01-28T00:38:51+09:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://foowold.com/en/"
-                />
+    <loc>http://davidmarciel.github.io/ko/posts/markdown-syntax/</loc>
+    <lastmod>2020-02-26T12:01:18+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="http://foowold.com/es/"
+                href="http://davidmarciel.github.io/es/posts/markdown-syntax/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="http://foowold.com/ko/"
+                href="http://davidmarciel.github.io/ko/posts/markdown-syntax/"
                 />
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/doc/gettingstarted/installation/</loc>
+    <loc>http://davidmarciel.github.io/ko/posts/</loc>
+    <lastmod>2020-02-26T12:01:18+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/about/</loc>
+    <lastmod>2020-02-26T12:01:15+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/about/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/</loc>
+    <lastmod>2020-02-26T12:01:15+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://davidmarciel.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/doc/gettingstarted/installation/</loc>
     <lastmod>2020-01-28T00:36:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/es/updates/</loc>
+    <loc>http://davidmarciel.github.io/ko/es/updates/</loc>
     <lastmod>2020-01-28T00:08:29+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/en/</loc>
+    <loc>http://davidmarciel.github.io/ko/en/</loc>
     <lastmod>2020-01-26T04:15:05+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/es/</loc>
+    <loc>http://davidmarciel.github.io/ko/es/</loc>
     <lastmod>2020-01-26T04:15:05+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/es/"
+                />
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/es/docs/</loc>
+    <loc>http://davidmarciel.github.io/ko/es/docs/</loc>
     <lastmod>2020-01-11T14:09:21+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/doc/</loc>
+    <loc>http://davidmarciel.github.io/ko/doc/</loc>
     <lastmod>2020-01-11T14:09:21+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/doc/prueba/</loc>
+    <loc>http://davidmarciel.github.io/ko/doc/prueba/</loc>
     <lastmod>2020-01-11T14:09:21+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://foowold.com/ko/es/blog/</loc>
+    <loc>http://davidmarciel.github.io/ko/es/blog/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/css/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/css/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/css/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/html/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/html/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/html/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/markdown/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/markdown/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/markdown/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/es/blog/markdown-syntax/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/es/docs/sections/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/themes/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/themes/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/themes/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/privacy/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/privacy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/privacy/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/es/blog/rich-content/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/shortcodes/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/shortcodes/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/shortcodes/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/es/blog/placeholder-text/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/text/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/text/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/text/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/tags/emoji/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://davidmarciel.github.io/es/tags/emoji/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://davidmarciel.github.io/ko/tags/emoji/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://davidmarciel.github.io/ko/es/blog/emoji-support/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>
