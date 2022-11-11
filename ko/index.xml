@@ -15,16 +15,6 @@
     
       
       <item>
-        <title>Content Formats</title>
-        <link>http://davidmarciel.github.io/ko/doc/singlepage/</link>
-        <pubDate>Tue, 28 Jan 2020 00:38:51 +0900</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/doc/singlepage/</guid>
-        <description>Markdown here
-HEHEHE</description>
-      </item>
-      
-      <item>
         <title>Markdown Syntax</title>
         <link>http://davidmarciel.github.io/ko/posts/markdown-syntax/</link>
         <pubDate>Wed, 26 Feb 2020 12:01:18 +0100</pubDate>
@@ -40,82 +30,6 @@ HEHEHE</description>
         
         <guid>http://davidmarciel.github.io/ko/about/</guid>
         <description></description>
-      </item>
-      
-      <item>
-        <title>Frontmatter</title>
-        <link>http://davidmarciel.github.io/ko/doc/gettingstarted/installation/</link>
-        <pubDate>Tue, 28 Jan 2020 00:36:14 +0900</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/doc/gettingstarted/installation/</guid>
-        <description>Markdown here
-Hello</description>
-      </item>
-      
-      <item>
-        <title>Documentation</title>
-        <link>http://davidmarciel.github.io/ko/doc/prueba/</link>
-        <pubDate>Sat, 11 Jan 2020 14:09:21 +0900</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/doc/prueba/</guid>
-        <description>The content here is appeared when you click the manu. So called overview page.</description>
-      </item>
-      
-      <item>
-        <title>Markdown Syntax Guide</title>
-        <link>http://davidmarciel.github.io/ko/es/blog/markdown-syntax/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/es/blog/markdown-syntax/</guid>
-        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
-pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
-subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
-caluere tempus&lt;/p&gt;</description>
-      </item>
-      
-      <item>
-        <title>Section</title>
-        <link>http://davidmarciel.github.io/ko/es/docs/sections/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/es/docs/sections/</guid>
-        <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-      </item>
-      
-      <item>
-        <title>Rich Content</title>
-        <link>http://davidmarciel.github.io/ko/es/blog/rich-content/</link>
-        <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/es/blog/rich-content/</guid>
-        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
-pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
-subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
-caluere tempus&lt;/p&gt;</description>
-      </item>
-      
-      <item>
-        <title>Placeholder Text</title>
-        <link>http://davidmarciel.github.io/ko/es/blog/placeholder-text/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/es/blog/placeholder-text/</guid>
-        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
-pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
-subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
-caluere tempus&lt;/p&gt;</description>
-      </item>
-      
-      <item>
-        <title>Emoji Support</title>
-        <link>http://davidmarciel.github.io/ko/es/blog/emoji-support/</link>
-        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://davidmarciel.github.io/ko/es/blog/emoji-support/</guid>
-        <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de&lt;br /&gt;
-pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice&lt;br /&gt;
-subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc&lt;br /&gt;
-caluere tempus&lt;/p&gt;</description>
       </item>
       
     
